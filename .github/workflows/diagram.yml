@@ -1,0 +1,17 @@
+name: Create diagram
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - main
+jobs:
+  get_data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@master
+      - name: Update diagram
+        uses: githubocto/repo-visualizer@main
+        with:
+          excluded_paths: "ignore,.github"
+          excluded_globs: ".git*;**/*.gitignore;**/*.{toml,yaml,yml,ini,in,css,notest};**/*.{png,jpg};**/*.{json,jsonl};**/*.{md,qmd};**/*.lock;LICENSE;**/*.txt"
